@@ -1,3 +1,4 @@
+
 """vinpr URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -17,6 +18,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls import include
 from vinapp import views
+
+
 
 urlpatterns = [
     url(r'^$',views.index,name="index"),

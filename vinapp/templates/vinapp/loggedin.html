@@ -23,6 +23,12 @@
 {% if user.is_authenticated %}
     <h1>Vineel says... hello {{ user.username }}!</h1>
 
+    <h1> Logged in username is {{ user.username }}</h1>
+    <h1>Logged in user Email is {{ user.email }}</h1>
+
+
+
+
 {% else %}
     <h1>Vineel says... hello world!</h1>
 {% endif %}

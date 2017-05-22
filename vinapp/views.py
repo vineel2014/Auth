@@ -81,7 +81,13 @@ def login(request):
         if user is not None:
             if user.is_active:
                 auth_login(request,user)
-                
+                email=user.email
+                print (email)
+                from django.core.mail import EmailMessage
+
+                email = EmailMessage('Vineel Welcomes you ', 'Thank you for logged into vineel site', to=[email])
+                email.send()
+
                 return render(request,'vinapp/loggedin.html')
                 
             else:
@@ -97,7 +103,7 @@ def login(request):
 
 @login_required
 def restricted(request):
-    return render(request,'vinapp/restricted.html')
+    return render(request, 'vinapp/restricted.html')
 
 
 @login_required(login_url='/vineel/login')
@@ -108,10 +114,3 @@ def logout(request):
 
 
     return HttpResponseRedirect("/vineel/login")
-
-
-
-
-
-
-
