@@ -6,3 +6,6 @@ admin.site.register(Category)
 admin.site.register(Page)
 admin.site.register(UserProfile)
 
+admin.site.site_title = 'Vineel site admin'
+admin.site.site_header = 'Vineel Administration'
+

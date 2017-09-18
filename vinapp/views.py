@@ -51,6 +51,14 @@ def register(request):
             profile.save()
 
             registered = True
+            email=user.email
+            username=request.POST.get('username')
+
+            from django.core.mail import EmailMessage
+
+            email = EmailMessage('Vineel Saying Thank you ', 'You are registered with Vineel\'s site as ' + username,
+                                 to=[email])
+            email.send()
 
 
         else:
@@ -82,10 +90,10 @@ def login(request):
             if user.is_active:
                 auth_login(request,user)
                 email=user.email
-                print (email)
+                #print (email)
                 from django.core.mail import EmailMessage
 
-                email = EmailMessage('Vineel Welcomes you ', 'Thank you for logged into vineel site', to=[email])
+                email = EmailMessage('Vineel Welcomes you ', 'You are logged into Vineel\'s site as '+username, to=[email])
                 email.send()
 
                 return render(request,'vinapp/loggedin.html')
@@ -100,10 +108,6 @@ def login(request):
 
         return render(request,"vinapp/login.html",{})
 
-
-@login_required
-def restricted(request):
-    return render(request, 'vinapp/restricted.html')
 
 
 @login_required(login_url='/vineel/login')
